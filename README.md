@@ -26,7 +26,7 @@ When we run these programs against varying sizes of random arrays, obtain the ge
 
 ### Thrust Library Implementation
 
-##### Description
+#### Description
 
 Thrust is a C++ STL-based template library for the CUDA framework. Thrust allows us to implement high performance parallel computation systems while requiring minimal amounts of programming effort using a high-level interface to interact with the GPU device.
 
@@ -40,17 +40,17 @@ The sorted array is:
 [0, 0, 3, 7, 7, 8, 12, 12, 12, 13, 14, 17, 17, 17, 18, 20, 20, 20, 21, 21, 21, 23, 23, 23, 23, 23, 24, 25, 26, 27, 27, 27, 28, 28, 33, 35, 35, 37, 37, 38, 38, 43, 44, 44, 45, 45, 45, 47, 47, 47, 52, 54, 55, 56, 57, 58, 58, 60, 60, 60, 62, 65, 65, 65, 66, 67, 68, 68, 69, 70, 71, 71, 71, 72, 73, 73, 75, 76, 77, 77, 78, 78, 81, 81, 81, 82, 83, 84, 85, 87, 87, 88, 88, 88, 92, 92, 93, 95, 95, 97], size=100
 ```
 
-##### Algorithm Implementation
+#### Algorithm Implementation
 
 The thrust library's sorting function is implemented using a parallel radix sort method called `cub radix sort`. This sorting algorithm extracts all the array elements' bits, and then groups them together while rearranging them for each bit position. This gives us a sorted array which can be made parallel as there is no sequential comparisons made to sort the array.
 
-##### Time Complexity Analysis
+#### Time Complexity Analysis
 
 The radix sort method's time complexity is dependent on the maximum possible values in the array. If that maximum possible value in the array is $k$, we can get the time complexity of the algorithm as $O((n+2)log_2(k))$ for bit-wise sorting. For a more general case, it would be: $O((n+b)log_b(k))$ for a sorting base = b. Our implementation assumes it is optimized for binary sorting, and hence the final time complexity becomes: 
 
 ***Time Complexity:*** $O((n+2)log_2(k))$
 
-##### Performance
+#### Performance
 
 We run the ***thrust*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
 
@@ -58,13 +58,13 @@ We run the ***thrust*** program with varying array sizes and plot their runtimes
 <img src="assets/Thrust_Performance.png" />
 </div>
 
-##### Explanation
+#### Explanation
 
 The thrust library's implementation of the sorting function is extremely optimized, reducing the number of kernel calls and saving the GPU memory to make the operation as efficient as possible for a general case scenario. This is why the plot appears almost like a straight line. But if we pay closer attention to the values obtained for array sizes in the millions (last three entries in the table), we can clearly see the $nlog(n)$ trend being displayed there. This is in line with our time complexity analysis.
 
 ### Single-Thread Implementation
 
-##### Description
+#### Description
 
 Radix sort is a linear sorting algorithm mostly used for sorting integer values. In this sorting algorithm, we perform a digit by digit sorting that starts from the least significant digit and goes up to the most significant digit of the array elements. The working principle of this algorithm is similar to the lexicographic arrange of words in a dictionary. They are not sorted by their entire length or overall letter arrangement. Instead, they are sorted using a letter by letter sorting method.
 
@@ -76,17 +76,17 @@ The sorted array is:
 [0, 0, 3, 7, 7, 8, 12, 12, 12, 13, 14, 17, 17, 17, 18, 20, 20, 20, 21, 21, 21, 23, 23, 23, 23, 23, 24, 25, 26, 27, 27, 27, 28, 28, 33, 35, 35, 37, 37, 38, 38, 43, 44, 44, 45, 45, 45, 47, 47, 47, 52, 54, 55, 56, 57, 58, 58, 60, 60, 60, 62, 65, 65, 65, 66, 67, 68, 68, 69, 70, 71, 71, 71, 72, 73, 73, 75, 76, 77, 77, 78, 78, 81, 81, 81, 82, 83, 84, 85, 87, 87, 88, 88, 88, 92, 92, 93, 95, 95, 97], size=100
 ```
 
-##### Algorithm Implementation
+#### Algorithm Implementation
 
 To implement this radix sort algorithm, we simply iterate through all the digit positions for every array element. The maximum number of digit positions are determined by the maximum possible value that the randomly generated array elements can possibly have. For each digit position, we create a bucket list to hold the count how many times each digit (0-9) occurs in all the array elements. Next, we rearrange the array elements in the order of how their digits in that specific digit position should be ordered by using a simple prefix scan on the bucket list followed by a counting sort.
 
-##### Time Complexity Analysis
+#### Time Complexity Analysis
 
 The radix sort method's time complexity is dependent on the maximum possible values in the array. If that maximum possible value in the array is $k$, we can get the time complexity of the algorithm as $O((n+10)log_10(k))$ for bit-wise sorting. Our implementation assumes it is optimized for binary sorting, and hence the final time complexity becomes: 
 
 ***Time Complexity:*** $O((n+10)log_10(k))$
 
-##### Performance
+#### Performance
 
 We run the ***singlethread*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
 
@@ -94,13 +94,13 @@ We run the ***singlethread*** program with varying array sizes and plot their ru
 <img src="assets/Single-Thread_Performance.png" />
 </div>
 
-##### Explanation
+#### Explanation
 
 This single-thread implementation of the sorting function is extremely ill-optimized, as we are running it on a single thread, and that too on a GPU device with a much lower clock speeds compared to CPU devices, which causes our program to slow down tremendously for large array sizes. Here, we can clearly observe the time complexity trend ($O((n+10)log_10(k))$) being displayed in the plot.
 
 ### Multi-Thread Implementation
 
-##### Algorithm Implementation
+#### Algorithm Implementation
 
 Our implementation of the multi-threaded program also uses the radix sort algorithm. Since the most efficient way of achieving a massively parallel sorting algorithm is to process all data points independently, we choose the most suitable method of doing it - using a bit-wise radix sort algorithm.
 
@@ -112,13 +112,13 @@ The sorted array is:
 [0, 0, 3, 7, 7, 8, 12, 12, 12, 13, 14, 17, 17, 17, 18, 20, 20, 20, 21, 21, 21, 23, 23, 23, 23, 23, 24, 25, 26, 27, 27, 27, 28, 28, 33, 35, 35, 37, 37, 38, 38, 43, 44, 44, 45, 45, 45, 47, 47, 47, 52, 54, 55, 56, 57, 58, 58, 60, 60, 60, 62, 65, 65, 65, 66, 67, 68, 68, 69, 70, 71, 71, 71, 72, 73, 73, 75, 76, 77, 77, 78, 78, 81, 81, 81, 82, 83, 84, 85, 87, 87, 88, 88, 88, 92, 92, 93, 95, 95, 97], size=100
 ```
 
-##### Time Complexity
+#### Time Complexity
 
 The radix sort algorithm operates on the basis of sorting without directly comparing the array elements (i.e. non-comparison type sorting). The thrust STL library's implementation of parallel sorting algorithms also uses this algorithm, albeit a more general case one which can sort any data-type in a massively parallel way. Since we used the same algorithm as the Thrust-libary's implementation, we can say that our method's time complexity is the same as the one mentioned in the thrust library's sort function's time complexity.
 
 ***Time Complexity:*** $O((n+2)log_2(k))$
 
-##### Performance
+#### Performance
 
 We run the ***multithread*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
 
@@ -126,7 +126,7 @@ We run the ***multithread*** program with varying array sizes and plot their run
 <img src="assets/Multi-Thread_Performance.png" />
 </div>
 
-##### Explanation
+#### Explanation
 
 This implementation shows better performance for larger array sizes, as there are multiple kernel calls, it is not the best possible outcome by any means, but for the specific requirement of sorting 32-bit integers, this algorithm performs much better than it's alternatives. We can also see a small bump in the performance plot, which is caused due to the fact that we are only using the only the maximum number of bits to determine how many keys our radix sort algorithm will use. This causes the number of keys to vary for larger array sizes. 
 

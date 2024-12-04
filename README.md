@@ -54,32 +54,6 @@ The radix sort method's time complexity is dependent on the maximum possible val
 
 We run the ***thrust*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
 
-| Number of Array Elements | Program Runtime (seconds) |
-| ------------------------ | ------------------------- |
-| 10000                    | 0.000116736               |
-| 20000                    | 0.000123392               |
-| 30000                    | 0.0001792                 |
-| 40000                    | 0.00023152                |
-| 50000                    | 0.000345536               |
-| 60000                    | 0.000383136               |
-| 70000                    | 0.000506592               |
-| 80000                    | 0.000590784               |
-| 90000                    | 0.00065808                |
-| 100000                   | 0.000765952               |
-| 200000                   | 0.00148474                |
-| 300000                   | 0.00220058                |
-| 400000                   | 0.0029399                 |
-| 500000                   | 0.00358899                |
-| 600000                   | 0.00486752                |
-| 700000                   | 0.00595866                |
-| 800000                   | 0.0076408                 |
-| 900000                   | 0.00706662                |
-| 1000000                  | 0.00762259                |
-| 2000000                  | 0.0155263                 |
-| 3000000                  | 0.023934                  |
-
-The corresponding graph for the performance measurement is as follows:
-
 <div align="center">
 <img src="assets/Thrust_Performance.png" />
 </div>
@@ -116,32 +90,6 @@ The radix sort method's time complexity is dependent on the maximum possible val
 
 We run the ***singlethread*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
 
-| Number of Array Elements | Program Runtime (seconds) |
-| ------------------------ | ------------------------- |
-| 1000                     | 0.00357686                |
-| 2000                     | 0.00883405                |
-| 3000                     | 0.013045                  |
-| 4000                     | 0.0172358                 |
-| 5000                     | 0.0214361                 |
-| 6000                     | 0.0256588                 |
-| 7000                     | 0.029872                  |
-| 8000                     | 0.0340629                 |
-| 9000                     | 0.0382597                 |
-| 10000                    | 0.042493                  |
-| 20000                    | 0.105533                  |
-| 30000                    | 0.141345                  |
-| 40000                    | 0.166599                  |
-| 50000                    | 0.200987                  |
-| 60000                    | 0.241104                  |
-| 70000                    | 0.282655                  |
-| 80000                    | 0.32576                   |
-| 90000                    | 0.3688                    |
-| 100000                   | 0.411608                  |
-| 200000                   | 1.05114                   |
-| 300000                   | 1.51276                   |
-
-The corresponding graph for the performance measurement is as follows:
-
 <div align="center">
 <img src="assets/Single-Thread_Performance.png" />
 </div>
@@ -173,32 +121,6 @@ The radix sort algorithm operates on the basis of sorting without directly compa
 ##### Performance
 
 We run the ***multithread*** program with varying array sizes and plot their runtimes against the number of array elements. This gives us a clear understanding of the implementations performance metric, as the array size changes. We can also verify the results of our time complexity analysis from this graph.
-
-| Number of Array Elements | Program Runtime (seconds) |
-| ------------------------ | ------------------------- |
-| 10000                    | 0.000887264               |
-| 20000                    | 0.000921152               |
-| 30000                    | 0.000948672               |
-| 40000                    | 0.00107251                |
-| 50000                    | 0.00121709                |
-| 60000                    | 0.00130397                |
-| 70000                    | 0.00141578                |
-| 80000                    | 0.001508                  |
-| 90000                    | 0.00159005                |
-| 100000                   | 0.0016505                 |
-| 200000                   | 0.00273987                |
-| 300000                   | 0.00395002                |
-| 400000                   | 0.00483267                |
-| 500000                   | 0.00569779                |
-| 600000                   | 0.00824051                |
-| 700000                   | 0.00910086                |
-| 800000                   | 0.00999718                |
-| 900000                   | 0.0109808                 |
-| 1000000                  | 0.0120317                 |
-| 2000000                  | 0.0221881                 |
-| 3000000                  | 0.0336555                 |
-
-The corresponding graph for the performance measurement is as follows:
 
 <div align="center">
 <img src="assets/Multi-Thread_Performance.png" />

@@ -81,7 +81,7 @@ We run the ***thrust*** program with varying array sizes and plot their runtimes
 The corresponding graph for the performance measurement is as follows:
 
 <div align="center">
-<img src="Thrust_Performance.png" />
+<img src="assets/Thrust_Performance.png" />
 </div>
 
 ##### Explanation
@@ -143,7 +143,7 @@ We run the ***singlethread*** program with varying array sizes and plot their ru
 The corresponding graph for the performance measurement is as follows:
 
 <div align="center">
-<img src="Single-Thread_Performance.png" />
+<img src="assets/Single-Thread_Performance.png" />
 </div>
 
 ##### Explanation
@@ -201,7 +201,7 @@ We run the ***multithread*** program with varying array sizes and plot their run
 The corresponding graph for the performance measurement is as follows:
 
 <div align="center">
-<img src="Multi-Thread_Performance.png" />
+<img src="assets/Multi-Thread_Performance.png" />
 </div>
 
 ##### Explanation

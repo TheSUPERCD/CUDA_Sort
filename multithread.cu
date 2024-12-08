@@ -188,7 +188,7 @@ int main(int argc, char* argv[]){
 	/////////////////////////////////////////////////////////////////////
 
 	// intializing the device array pointers
-    int *device_array;
+  int *device_array;
 	int *device_array_copy;
     
 	// allocating memory for the device arrays on GPU
@@ -204,45 +204,27 @@ int main(int argc, char* argv[]){
 	// copy the sorted array back from GPU-device to host memory
 	cudaMemcpy(array, device_array, size*sizeof(int), cudaMemcpyDeviceToHost);
 
-	/////////////////////////////////////////////////////////////////////
-	/* 	You need to implement your kernel as a function at the top of this file.
-	*	Here you must
-	*
-	*	1) allocate device memory
-	*	2) set up the grid and block sizes
-	*	3) call your kenrnel
-	*	4) get the result back from the GPU
-	*
-	*	to use the error checking code, wrap any cudamalloc functions as follows:
-	*	CudaSafeCall( cudaMalloc( &pointer_to_a_device_pointer, length_of_array * sizeof( int ) ) );
-	*	Also, place the following function call immediately after you call your kernel
-	*	( or after any other cuda call that you think might be causing an error )
-	*	CudaCheckError();
-	*/
+  /***********************************
+  stop and destroy the cuda timer
+  ***********************************/
+  cudaEventRecord(stopTotal, 0);
+  cudaEventSynchronize(stopTotal);
+  cudaEventElapsedTime(&timeTotal, startTotal, stopTotal);
+  cudaEventDestroy(startTotal);
+  cudaEventDestroy(stopTotal);
+  /***********************************
+  end of cuda timer destruction
+  ***********************************/ 
     
-    
-    
-    /***********************************
-    stop and destroy the cuda timer
-    ***********************************/
-    cudaEventRecord(stopTotal, 0);
-    cudaEventSynchronize(stopTotal);
-    cudaEventElapsedTime(&timeTotal, startTotal, stopTotal);
-    cudaEventDestroy(startTotal);
-    cudaEventDestroy(stopTotal);
-    /***********************************
-    end of cuda timer destruction
-    ***********************************/ 
-    
-    cudaFree(device_array);
+  cudaFree(device_array);
 	cudaFree(device_array_copy);
 
-    std::cerr << "Total time in seconds: "
-    	<< timeTotal / 1000.0 << std::endl;
-    if (printSorted){
-        printFunc(array, size, "\nThe sorted array is:");
-
-    }
-    free(array);
-    return 0;
+  std::cerr << "Total time in seconds: "<< (timeTotal / 1000.0) << std::endl;
+  
+  if(printSorted){
+      printFunc(array, size, "\nThe sorted array is:");
+  }
+  
+  free(array);
+  return 0;
 }
